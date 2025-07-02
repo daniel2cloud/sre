@@ -4,22 +4,22 @@ data "aws_availability_zones" "all" {}
 # Data source: DB remote state
 data "terraform_remote_state" "db" {
   backend = "s3"
-  
-  config {
-	bucket = "${var.db_remote_state_bucket}"
-	key    = "${var.db_remote_state_key}"
+
+  config = {
+	bucket = var.db_remote_state_bucket
+	key    = var.db_remote_state_key
 	region = "eu-west-1"
   }
 }
 
 # Data source: Template file
 data "template_file" "user_data" {
-  template = "${file("${path.module}/user-data.sh")}"
-  
-  vars {
-    server_port = "${var.server_port}"
-	db_address  = "${data.terraform_remote_state.db.address}"
-	db_port     = "${data.terraform_remote_state.db.port}"
+  template = file("${path.module}/user-data.sh")
+
+  vars = {
+    server_port = var.server_port
+	db_address  = data.terraform_remote_state.db.outputs.address
+	db_port     = data.terraform_remote_state.db.outputs.port
   }
 }
 

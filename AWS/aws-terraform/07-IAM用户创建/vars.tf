@@ -1,6 +1,6 @@
 # Input variable: user names
 variable "user_names" {
   description = "Create IAM users with these names"
-  type        = "list"
+  type        = list(string)
   default     = ["neo", "trinity", "morpheus"]
 }

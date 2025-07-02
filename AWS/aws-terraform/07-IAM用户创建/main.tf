@@ -1,7 +1,16 @@
+# Configure Terraform and required providers
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 5.0"
+    }
+  }
+}
+
 # Configure the AWS provider
 provider "aws" {
-  region = "eu-west-1"
-
+  region = "ap-east-1"
 }
 
 # Create an IAM user

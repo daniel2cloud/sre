@@ -1,17 +1,17 @@
-# Terraform Zero-Downtime Deployment example
+# Terraform 零停机部署示例
 
-This folder contains a zero-downtime deployment example of a [Terraform](https://www.terraform.io/) installed on your computer file on AWS (Amazon Web Services).
+此文件夹包含在AWS（Amazon Web Services）上使用[Terraform](https://www.terraform.io/)进行零停机部署的示例。
 
-It shows how to deploy a new AMI across the cluster when you have made changes to your code. In addition, you control the text the User Data script return from its one-liner HTTP server.
+它展示了当你对代码进行更改时，如何在集群中部署新的AMI。此外，你还可以控制用户数据脚本从其单行HTTP服务器返回的文本。
 
-Furthermore, it shows how to develop (not duplicating code) web server clusters in different environments using a module.
+此外，它还展示了如何使用模块在不同环境中开发（不重复代码）Web服务器集群。
 
-The environments are:
+环境包括：
 
-* Staging (stage)
-* Production (prod)
+* 预发布环境 (stage)
+* 生产环境 (prod)
 
-This is the file layout in this repo:
+此仓库的文件布局如下：
 
 ```bash
 live
@@ -47,40 +47,40 @@ modules
             └── (etc)
 ```
 
-It uses in common for both environments:
+两个环境共同使用的组件：
 
-* Terraform Remote State example: [live/global/s3](live/global/s3)
-* Terraform Web Server Cluster module example: [modules/services/webserver-cluster](modules/services/webserver-cluster)
+* Terraform 远程状态示例：[live/global/s3](live/global/s3)
+* Terraform Web服务器集群模块示例：[modules/services/webserver-cluster](modules/services/webserver-cluster)
 
-It uses for staging environment:
+预发布环境使用的组件：
 
-* Terraform MySQL on RDS example (staging environment): [live/stage/data-stores/mysql](live/stage/data-stores/mysql)
-* Terraform Web Server Cluster example (staging environment): [live/stage/services/webserver-cluster](live/stage/services/webserver-cluster)
+* Terraform MySQL on RDS 示例（预发布环境）：[live/stage/data-stores/mysql](live/stage/data-stores/mysql)
+* Terraform Web服务器集群示例（预发布环境）：[live/stage/services/webserver-cluster](live/stage/services/webserver-cluster)
 
-It uses for production environment:
+生产环境使用的组件：
 
-* Terraform MySQL on RDS example (production environment): [live/prod/data-stores/mysql](live/prod/data-stores/mysql)
-* Terraform Web Server Cluster example (production environment): [live/prod/services/webserver-cluster](live/prod/services/webserver-cluster)
+* Terraform MySQL on RDS 示例（生产环境）：[live/prod/data-stores/mysql](live/prod/data-stores/mysql)
+* Terraform Web服务器集群示例（生产环境）：[live/prod/services/webserver-cluster](live/prod/services/webserver-cluster)
 
-## Requirements
+## 系统要求
 
-* You must have [Terraform](https://www.terraform.io/) installed on your computer.
-* You must have an [AWS (Amazon Web Services)](http://aws.amazon.com/) account.
-* It uses the Terraform AWS Provider that interacts with the many resources supported by AWS through its APIs.
-* This code was written for Terraform 0.10.x.
+* 你必须在计算机上安装[Terraform](https://www.terraform.io/)。
+* 你必须拥有[AWS (Amazon Web Services)](http://aws.amazon.com/)账户。
+* 它使用Terraform AWS Provider，通过AWS API与AWS支持的众多资源进行交互。
+* 此代码是为Terraform 0.10.x编写的。
 
-## Using the code
+## 使用代码
 
-Configure your AWS access keys.
+配置你的AWS访问密钥。
 
-Use Terraform Remote State example for creating the remote state bucket. See: [live/global/s3](live/global/s3)
+使用Terraform远程状态示例创建远程状态存储桶。参见：[live/global/s3](live/global/s3)
 
-Use Terraform module example for Web Server Cluster example in the staging environment and Web Server Cluster example in the production environment. See: [modules/services/webserver-cluster](modules/services/webserver-cluster)
+使用Terraform模块示例在预发布环境和生产环境中创建Web服务器集群。参见：[modules/services/webserver-cluster](modules/services/webserver-cluster)
 
-Use Terraform MySQL on RDS example for creating a MySQL database in the staging environment. See: [live/stage/data-stores/mysql](live/stage/data-stores/mysql)
+使用Terraform MySQL on RDS示例在预发布环境中创建MySQL数据库。参见：[live/stage/data-stores/mysql](live/stage/data-stores/mysql)
 
-Use Terraform Web Server Cluster example for creating a web server cluster in the staging environment. See: [live/stage/services/webserver-cluster](live/stage/services/webserver-cluster)
+使用Terraform Web服务器集群示例在预发布环境中创建Web服务器集群。参见：[live/stage/services/webserver-cluster](live/stage/services/webserver-cluster)
 
-Use Terraform MySQL on RDS example for creating a MySQL database in the production environment. See: [live/prod/data-stores/mysql](live/prod/data-stores/mysql)
+使用Terraform MySQL on RDS示例在生产环境中创建MySQL数据库。参见：[live/prod/data-stores/mysql](live/prod/data-stores/mysql)
 
-Use Terraform Web Server Cluster example for creating a web server cluster in the production environment. See: [live/prod/services/webserver-cluster](live/prod/services/webserver-cluster)
+使用Terraform Web服务器集群示例在生产环境中创建Web服务器集群。参见：[live/prod/services/webserver-cluster](live/prod/services/webserver-cluster)

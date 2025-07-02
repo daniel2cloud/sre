@@ -1,6 +1,6 @@
 # Configure the AWS provider
 provider "aws" {
-  region = "eu-west-1"
+  region = "ap-east-1"
 }
 
 # Create a Security Group for an EC2 instance 
@@ -17,8 +17,8 @@ resource "aws_security_group" "instance" {
 
 # Create an EC2 instance
 resource "aws_instance" "example" {
-  ami			                = "ami-785db401"
-  instance_type           = "t2.micro"
+  ami           = "ami-0a016692298cf2ee2"
+  instance_type = "t3.small"
   vpc_security_group_ids  = ["${aws_security_group.instance.id}"]
   
   user_data = <<-EOF
@@ -27,7 +27,7 @@ resource "aws_instance" "example" {
 	      nohup busybox httpd -f -p "${var.server_port}" &
 	      EOF
 			  
-  tags {
+  tags = {
     Name = "terraform-example"
   }
 }

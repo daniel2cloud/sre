@@ -1,7 +1,7 @@
 # Input variable: server port
 variable "server_port" {
   description = "The port the server will use for HTTP requests"
-  default = "8080"
+  default = "8083"
 }
 
 # Input variable: Cluster name
@@ -42,7 +42,7 @@ variable "enable_autoscaling" {
 # Input variable: AMI
 variable "ami" {
   description = "The AMI to run in the cluster"
-  default     =  "ami-785db401"
+  default     =  "ami-0a016692298cf2ee2"
 }
 
 # Input variable: Web server text

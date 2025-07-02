@@ -1,6 +1,6 @@
 # Configure the AWS provider
 provider "aws" {
-  region = "eu-west-1"
+  region = "ap-east-1"
 }
 
 # Create a S3 bucket
