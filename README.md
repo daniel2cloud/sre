@@ -1,3 +1,15 @@
+## API Monitor
+项目说明
+API Monitor 是一个用于监控 API 调用情况的工具，主要功能包括：
+
+从 Elasticsearch 收集 API 日志
+将日志数据写入 InfluxDB
+监控 API 响应时间
+检测慢请求并发送钉钉告警
+
+链接地址  https://github.com/daniel2cloud/api-monitor
+
+
 ## aws 
     1)terraform 基础设施即代码 (Infrastructure as Code, IaC) 工具，用于自动化管理和部署云基础架构。
     2）aws-scripts  aws日常运维管理脚本
