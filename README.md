@@ -12,6 +12,32 @@ API Monitor 是一个用于监控 API 调用情况的工具，主要功能包括
 链接地址：https://github.com/daniel2cloud/api-monitor
 
 ---
+## Image pull
+
+**项目说明**
+
+一个适合国内环境的 Docker 镜像下载工具，通过海外服务器中转加速下载。
+
+### 服务端 (海外服务器)
+1. 接收客户端的下载请求
+2. 从 Docker Hub 下载镜像
+3. 将镜像保存到 `/data/package` 目录（Nginx 静态目录）
+4. 返回镜像下载地址（如：`http://服务端IP:30000/nginx-latest.tar`）
+5. 清理工作：
+   - 使用 `docker rmi` 删除下载的镜像
+   - 清理本地的 tar 包
+
+### 客户端（任意服务器）
+1. 发送镜像下载请求
+2. 获取服务端返回的下载地址
+3. 使用 aria2 加速下载镜像
+4. 加载镜像到本地 Docker
+5. 验证镜像下载结果
+6. 清理本地临时文件
+
+链接地址：[https://github.com/daniel2cloud/image-pull](https://github.com/daniel2cloud/image-pull)
+
+---
 
 ## AWS
 
